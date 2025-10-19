@@ -1,0 +1,20 @@
+{
+    "name": "xvq/php-adb",
+    "description": "PHP library to interact with Android devices via ADB.",
+    "autoload": {
+        "psr-4": {
+            "Xvq\\PhpAdb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Haozy",
+            "email": "x1554322@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-mbstring": "*"
+    },
+    "license": "MIT"
+}
