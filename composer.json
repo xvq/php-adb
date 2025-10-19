@@ -1,6 +1,8 @@
 {
     "name": "xvq/php-adb",
+    "type": "library",
     "description": "PHP library to interact with Android devices via ADB.",
+    "homepage": "https://github.com/xvq/php-adb",
     "autoload": {
         "psr-4": {
             "Xvq\\PhpAdb\\": "src/"
