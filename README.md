@@ -1,4 +1,4 @@
-# php-adb
+# PHP ADB Library
 
 A PHP library for interacting with Android devices via ADB.
 
