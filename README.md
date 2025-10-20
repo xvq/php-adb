@@ -110,7 +110,7 @@ $device->shell->getWindowSize();
 $device->screenshot->save('screenshot.png');
 
 $raw = $device->screenshot->raw();
-file_put_contents('screenshot.raw', $raw);
+file_put_contents('screenshot.png', $raw);
 ```
 ## File Operations
 ```php
