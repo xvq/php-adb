@@ -1,6 +1,6 @@
 <?php
 
-namespace Xvq\PhpAdb\enum;
+namespace Xvq\PhpAdb\Enum;
 
 enum Network: string
 {

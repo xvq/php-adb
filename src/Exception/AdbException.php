@@ -1,6 +1,6 @@
 <?php
 
-namespace Xvq\PhpAdb\exception;
+namespace Xvq\PhpAdb\Exception;
 
 class AdbException extends \RuntimeException
 {

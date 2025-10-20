@@ -1,9 +1,9 @@
 <?php
 
-namespace Xvq\PhpAdb\extension;
+namespace Xvq\PhpAdb\Extension;
 
 use Xvq\PhpAdb\Device;
-use Xvq\PhpAdb\exception\AdbException;
+use Xvq\PhpAdb\Exception\AdbException;
 
 class Screenshot
 {

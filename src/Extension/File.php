@@ -1,10 +1,10 @@
 <?php
 
-namespace Xvq\PhpAdb\extension;
+namespace Xvq\PhpAdb\Extension;
 
 use Xvq\PhpAdb\Device;
-use Xvq\PhpAdb\exception\AdbException;
-use Xvq\PhpAdb\exception\AdbProtocolException;
+use Xvq\PhpAdb\Exception\AdbException;
+use Xvq\PhpAdb\Exception\AdbProtocolException;
 use Xvq\PhpAdb\Transport;
 use DateTime;
 use Generator;

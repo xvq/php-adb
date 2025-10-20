@@ -2,9 +2,9 @@
 
 namespace Xvq\PhpAdb;
 
-use Xvq\PhpAdb\exception\AdbConnectionException;
-use Xvq\PhpAdb\exception\AdbException;
-use Xvq\PhpAdb\exception\AdbProtocolException;
+use Xvq\PhpAdb\Exception\AdbConnectionException;
+use Xvq\PhpAdb\Exception\AdbException;
+use Xvq\PhpAdb\Exception\AdbProtocolException;
 
 class Transport
 {
@@ -28,7 +28,7 @@ class Transport
         $this->checkOkay();
     }
 
-    public function requestWithStingBlock(string $cmd): string
+    public function requestWithStringBlock(string $cmd): string
     {
         $this->sendCommand($cmd);
 

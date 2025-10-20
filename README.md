@@ -63,8 +63,9 @@ $device->reverse('tcp:5555', 'tcp:6666');
 $device->reverseList();
 ```
 ## Create socket connection to the device
+
 ```php
-use Xvq\PhpAdb\enum\Network;
+use Xvq\PhpAdb\Enum\Network;
 
 // Example: create a video stream connection for scrcpy
 $con = $device->createConnection(Network::LOCAL_ABSTRACT, 'scrcpy');
@@ -184,8 +185,9 @@ $info = $device->app->info('com.example.test');
 ]
 ```
 ## Input
+
 ```php
-use Xvq\PhpAdb\enum\KeyCode;
+use Xvq\PhpAdb\Enum\KeyCode;
 
 // Simulate pressing the Home button
 $device->input->keyEvent(KeyCode::KEY_HOME);
@@ -224,9 +226,9 @@ $device->getState();
 $v = $device->androidVersion();
 
 // get device info
-$info = $device->getInfo();
+$info = $device->info;
 echo $info->serial;
-echo $info->transport_id;
+echo $info->transportId;
 echo $info->product;
 echo $info->model;
 echo $info->device;

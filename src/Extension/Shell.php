@@ -1,11 +1,11 @@
 <?php
 
-namespace Xvq\PhpAdb\extension;
+namespace Xvq\PhpAdb\Extension;
 
 use Xvq\PhpAdb\Device;
 use Xvq\PhpAdb\DTO\ShellReturn;
-use Xvq\PhpAdb\enum\KeyCode;
-use Xvq\PhpAdb\exception\AdbException;
+use Xvq\PhpAdb\Enum\KeyCode;
+use Xvq\PhpAdb\Exception\AdbException;
 
 class Shell
 {

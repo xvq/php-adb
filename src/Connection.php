@@ -1,8 +1,8 @@
 <?php
 namespace Xvq\PhpAdb;
 
-use Xvq\PhpAdb\exception\AdbConnectionException;
-use Xvq\PhpAdb\exception\AdbException;
+use Xvq\PhpAdb\Exception\AdbConnectionException;
+use Xvq\PhpAdb\Exception\AdbException;
 use RuntimeException;
 
 

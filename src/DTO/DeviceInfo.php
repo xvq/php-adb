@@ -6,7 +6,7 @@ class DeviceInfo
 {
     public function __construct(
         public readonly string $serial = '',
-        public readonly int    $transport_id = 0,
+        public readonly int    $transportId = 0,
         public readonly string $product = '',
         public readonly string $model = '',
         public readonly string $device = '',
@@ -16,7 +16,7 @@ class DeviceInfo
     {
         return [
             'serial' => $this->serial,
-            'transportId' => $this->transport_id,
+            'transportId' => $this->transportId,
             'product' => $this->product,
             'model' => $this->model,
             'device' => $this->device,

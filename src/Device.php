@@ -2,16 +2,16 @@
 namespace Xvq\PhpAdb;
 
 use Xvq\PhpAdb\DTO\DeviceInfo;
-use Xvq\PhpAdb\enum\Network;
-use Xvq\PhpAdb\extension\App;
-use Xvq\PhpAdb\extension\Input;
-use Xvq\PhpAdb\extension\Screenshot;
-use Xvq\PhpAdb\extension\Shell;
-use Xvq\PhpAdb\extension\File;
+use Xvq\PhpAdb\Enum\Network;
+use Xvq\PhpAdb\Extension\App;
+use Xvq\PhpAdb\Extension\Input;
+use Xvq\PhpAdb\Extension\Screenshot;
+use Xvq\PhpAdb\Extension\Shell;
+use Xvq\PhpAdb\Extension\File;
 
 class Device
 {
-    public readonly DeviceInfo $deviceInfo;
+    public readonly DeviceInfo $info;
 
     private AdbClient $adbClient;
 
@@ -24,7 +24,7 @@ class Device
     public function __construct(AdbClient $adbClient, DeviceInfo $deviceInfo)
     {
         $this->adbClient = $adbClient;
-        $this->deviceInfo = $deviceInfo;
+        $this->info = $deviceInfo;
 
         $this->shell = new Shell($this);
         $this->file = new File($this);
@@ -45,20 +45,20 @@ class Device
         $transport = new Transport($this->adbClient->host, $this->adbClient->port, $timeout);
 
         if($command){
-            if($this->deviceInfo->transport_id){
-                $transport->sendCommand("host-transport-id:{$this->deviceInfo->transport_id}:$command");
-            }else if ($this->deviceInfo->serial){
-                $transport->sendCommand("host-serial:{$this->deviceInfo->serial}:$command");
+            if($this->info->transportId){
+                $transport->sendCommand("host-transport-id:{$this->info->transportId}:$command");
+            }else if ($this->info->serial){
+                $transport->sendCommand("host-serial:{$this->info->serial}:$command");
             }
         }else{
-            if($this->deviceInfo->transport_id){
-                $transport->sendCommand("host:transport-id:{$this->deviceInfo->transport_id}");
-            }else if ($this->deviceInfo->serial){
+            if($this->info->transportId){
+                $transport->sendCommand("host:transport-id:{$this->info->transportId}");
+            }else if ($this->info->serial){
                 if ($this->adbClient->getServerVersion() >= 41){
-                    $transport->sendCommand("host:tport:serial:{$this->deviceInfo->serial}");
+                    $transport->sendCommand("host:tport:serial:{$this->info->serial}");
                     $transport->connection->read(8);
                 }else{
-                    $transport->sendCommand("host:transport:{$this->deviceInfo->serial}");
+                    $transport->sendCommand("host:transport:{$this->info->serial}");
                 }
             }
         }
@@ -74,16 +74,6 @@ class Device
     public function androidVersion(): string
     {
         return $this->shell->getProp("ro.build.version.release");
-    }
-
-    /**
-     * Get the device information.
-     *
-     * @return DeviceInfo
-     */
-    public function getInfo(): DeviceInfo
-    {
-        return $this->deviceInfo;
     }
 
     /**
@@ -212,7 +202,7 @@ class Device
     public function reverseList(): array
     {
         $transport = $this->openTransport();
-        $content = $transport->requestWithStingBlock("reverse:list-forward");
+        $content = $transport->requestWithStringBlock("reverse:list-forward");
         $items = [];
 
         foreach (explode("\n", trim($content)) as $line) {
