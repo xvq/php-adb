@@ -13,7 +13,7 @@ class Connection
     public readonly int $timeout;
 
     /** @var resource|null */
-    private $socket = null;
+    public $socket = null;
 
 
     public function __construct(string $host = '127.0.0.1', int $port = 5037, int $timeout = 5)
