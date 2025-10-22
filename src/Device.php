@@ -194,6 +194,31 @@ class Device
     }
 
     /**
+     * Remove an ADB forward port mapping.
+     *
+     * @param string $local Local port or socket on the device
+     */
+    public function removeForward(string $local): void
+    {
+        $transport = $this->openTransport();
+        $transport->sendCommand("forward:killforward:{$local}");
+        $transport->checkOkay();
+    }
+
+
+    /**
+     * Remove an ADB reverse port mapping.
+     *
+     * @param string $local Local port or socket on the device
+     */
+    public function removeReverse(string $local): void
+    {
+        $transport = $this->openTransport();
+        $transport->sendCommand("reverse:killforward:{$local}");
+        $transport->checkOkay();
+    }
+
+    /**
      * Get a list of all current reverse forwards from the device.
      *
      * @return array List of reverse forwards, each containing:
@@ -213,8 +238,8 @@ class Device
             }
 
             $items[] = [
-                'local'  => $parts[0],
-                'remote' => $parts[1],
+                'local'  => $parts[1],
+                'remote' => $parts[2],
             ];
         }
 
