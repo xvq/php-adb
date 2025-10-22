@@ -52,7 +52,6 @@ class Shell
 
         while (true) {
             $header = $transport->readExact(5);
-            var_dump($header);
             $msgId = ord($header[0]);
             $length = unpack('V', substr($header, 1, 4))[1]; // little-endian uint32
 
