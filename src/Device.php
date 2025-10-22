@@ -188,7 +188,8 @@ class Device
     public function reverse(string $local, string $remote, bool $noRebind = false): void
     {
         $cmd = 'reverse:forward' . ($noRebind ? ':norebind' : '') . ":{$local};{$remote}";
-        $transport = $this->openTransport($cmd);
+        $transport = $this->openTransport();
+        $transport->sendCommand($cmd);
         $transport->checkOkay();
     }
 
